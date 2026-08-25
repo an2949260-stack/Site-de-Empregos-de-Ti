@@ -1,1 +1,0 @@
-console.log("Olá Mundo!, meu ambiente está configurado corretamente!");
