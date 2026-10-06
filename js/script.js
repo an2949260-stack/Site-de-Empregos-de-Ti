@@ -173,4 +173,4 @@ function alternarTema() {
 }
 
 btnTheme.addEventListener('click', alternarTema);
-carregarTemaSalvo(); 
+carregarTemaSalvo();
