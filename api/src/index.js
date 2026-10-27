@@ -1,28 +1,39 @@
 const express = require('express');
-const app = express();
+const cors = require('cors');
 
-// Middleware para processar requisições com corpo em JSON
+const vagasRoutes = require('./routes/controllers/vagas.routes');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(cors());
 app.use(express.json());
 
-// Rota raiz de status da API
 app.get('/', (req, res) => {
-  return res.status(200).json({
-    status: 'success',
-    message: 'API funcionando 🚀',
-    timestamp: new Date().toISOString()
-  });
+    return res.status(200).json({
+        status: 'success',
+        message: 'API funcionando 🚀',
+        timestamp: new Date().toISOString()
+    });
 });
 
-// Tratamento de rota não encontrada (404)
+app.get('/api/health', (req, res) => {
+    res.json({
+        status: 'ok',
+        projeto: 'Dev-jobs API',
+        timestamp: new Date().toISOString()
+    });
+});
+
+app.use('/api', vagasRoutes);
+
 app.use((req, res) => {
-  return res.status(404).json({
-    status: 'error',
-    message: 'Rota não encontrada'
-  });
+    return res.status(404).json({
+        status: 'error',
+        message: 'Rota não encontrada'
+    });
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+app.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost:${port}`);
 });
