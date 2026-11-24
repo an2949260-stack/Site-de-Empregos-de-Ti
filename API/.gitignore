@@ -1,0 +1,8 @@
+node_modules/
+devjobs.db
+*.db
+*.sqlite
+*.sqlite3
+.env
+.env.*
+npm-debug.log*
