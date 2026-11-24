@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const vagasRoutes = require('./routes/controllers/vagas.routes');
+const vagasRoutes = require('./routes/vagas.routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -37,3 +37,5 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
+module.exports = app;
