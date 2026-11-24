@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 
-const vagasRoutes = require('./routes/vagas.routes');
+const vagasRoutes = require('./Rotas/vagas.routes');
+const authRoutes = require('./Rotas/auth.routes');
+const cepRoutes = require('./Rotas/cep.routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,7 +27,9 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-app.use('/api', vagasRoutes);
+app.use('/api/vagas', vagasRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/cep', cepRoutes);
 
 app.use((req, res) => {
     return res.status(404).json({
